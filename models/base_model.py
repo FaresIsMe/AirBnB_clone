@@ -1,0 +1,3 @@
+class BaseModel:
+    """My base class"""
+    ...
