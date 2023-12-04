@@ -1,3 +1,1 @@
-class BaseModel:
-    """My base class"""
-    ...
+"""just random stuff here"""
