@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 """That is my BaseModel module"""
-import json
 from datetime import datetime
 import uuid
 from __init__ import storage
