@@ -3,6 +3,7 @@
 import json
 from datetime import datetime
 import uuid
+from __init__ import storage
 
 class BaseModel:
     """Here is my BaseModel class from which everything will be inherited"""
@@ -25,7 +26,7 @@ class BaseModel:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
-
+            storage.new(self)
     def __str__(self):
         """My str method that will print some info about my class"""
         return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
@@ -33,6 +34,7 @@ class BaseModel:
     def save(self):
         """Just a method now and it updates one attribute"""
         self.updated_at = datetime.now()
+        storage.save()
     
     def to_dict(self):
         myReturnedDic = {}
