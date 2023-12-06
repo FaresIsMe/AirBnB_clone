@@ -27,3 +27,4 @@ class FileStorge:
                     self.__object[key] = theDicOfObj
         except (FileNotFoundError, json.JSONDecodeError) as hi:
             pass
+        
