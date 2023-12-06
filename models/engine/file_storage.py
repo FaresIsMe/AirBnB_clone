@@ -2,6 +2,7 @@
 """My file storage class to deal with json things"""
 import json
 from ..base_model import BaseModel
+from ..user import User
 
 class FileStorge:
     __file_path = 'file.json'
