@@ -1,9 +1,15 @@
 #!/usr/bin/python3
 """That is my console module"""
 import sys
-sys.path.append('/home/fares_me/ALX/AirBnB_clone/models/')
+# sys.path.append('/home/fares_me/ALX/AirBnB_clone/models/')
 import cmd
 from models.base_model import BaseModel
+from models.review import Review
+from models.amentiy import Amenity
+from models.city import City
+from models.place import Place
+from models.user import User
+from models.state import State
 from models import storage
 
 class HBNBCommand(cmd.Cmd):
