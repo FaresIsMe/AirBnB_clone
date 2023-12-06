@@ -109,12 +109,20 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
 
     def emptyline(self):
+        """A method to exit the cmd with a new line"""
         pass
 
     def do_EOF(self, line):
+        """A method to exit the cmd with a new line"""
+        print()
         return True
 
+    def help_EOF(self):
+        """The help for eof"""
+        print("Used to exit the cmd")
+
     def do_quit(self, line):
+        """Guess what it does!"""
         return True
     
     def help_create(self):
