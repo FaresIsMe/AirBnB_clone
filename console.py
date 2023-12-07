@@ -14,7 +14,8 @@ from models import storage
 
 class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb) '
-
+    myClasses = ['BaseModel', 'Review', 'Amentiy',
+                'City', 'Place', 'User', 'State']
     def do_create(self, arg):
         """ Creates a new instance of BaseModel"""
         if not arg:
@@ -76,10 +77,19 @@ class HBNBCommand(cmd.Cmd):
             print([str(value) for value in storage.all().values()])
         else:
             try:
-                if arg in storage.all():
-                    print([str(value) for key, value in storage.all().items() if arg in key])
-                else:
-                    print("** class doesn't exist **")
+                myDic = storage.all()
+                myClassList = []
+                myClassName = ''
+                for key, value in myDic.items():
+                    myClassList = key.split('.')
+                    myClassName = myClassList[0]
+                    if myClassName in HBNBCommand.myClasses and myClassName == arg:
+                        print(value)
+                    else:
+                        if arg != myClassName:
+                            pass
+                        else:
+                            print("** class doesn't exist **")
             except NameError:
                 print("** class doesn't exist **")
 
