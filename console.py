@@ -123,7 +123,30 @@ class HBNBCommand(cmd.Cmd):
             instance.save()
         except NameError:
             print("** class doesn't exist **")
-
+    def precmd(self, line):
+        myArgs = line.split('.')
+        if len(myArgs) == 2:    
+            myClassName = myArgs[0]
+            theCommand = myArgs[1]
+            theCommandAfterNewSplitting = theCommand.split(',')
+            if len(theCommandAfterNewSplitting) == 1:
+                theCommandName = theCommand.split('(', 1)
+                theFirstArgumentwithQuotes = (theCommandName[1].split(')', 1))
+                theRealFirst=  theFirstArgumentwithQuotes[0][1:-1]
+                theLastCommand = theCommandName[0] + ' ' + myClassName + \
+                ' ' +  theRealFirst
+                return theLastCommand
+            else:
+                theAttr = theCommandAfterNewSplitting[1][1:-1].strip().strip('"')
+                theValue = theCommandAfterNewSplitting[2][1:-1].strip().strip('"')
+                theCommandNameAndId = theCommandAfterNewSplitting[0].split('(')
+                theName = theCommandNameAndId[0]
+                theId = theCommandNameAndId[1].strip().strip('"')
+                theLastCommand = theName + ' ' + myClassName + ' ' + theId + \
+                ' ' + theAttr + ' ' + theValue
+                return theLastCommand
+        else:
+            return line
     def emptyline(self):
         """A method to exit the cmd with a new line"""
         pass
