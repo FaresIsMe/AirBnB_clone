@@ -1,7 +1,5 @@
 #!/usr/bin/python3
 """That is my console module"""
-import sys
-# sys.path.append('/home/fares_me/ALX/AirBnB_clone/models/')
 import cmd
 from models.base_model import BaseModel
 from models.review import Review
@@ -90,8 +88,33 @@ class HBNBCommand(cmd.Cmd):
                             pass
                         else:
                             print("** class doesn't exist **")
+                            break
             except NameError:
                 print("** class doesn't exist **")
+    def do_count(self, arg):
+        """A method that count the number of object from 
+        a specfic class"""
+        myCounter = 0
+        myClassName = ''
+        myClassList = []
+        flag = 1
+        myDic = storage.all()
+        for key, value in myDic.items():
+            myClassList = key.split('.')
+            myClassName = myClassList[0]
+            if myClassName in HBNBCommand.myClasses and myClassName == arg:
+                myCounter = myCounter + 1
+            else:
+                if arg != myClassName:
+                    pass
+                else:
+                    print("** class doesn't exist **")
+                    flag = 0
+                    break
+        if (flag == 1 and arg in HBNBCommand.myClasses):
+            print(myCounter)
+        else:
+            print("** class doesn't exist **")
 
     def do_update(self, arg):
         """ Updates an instance based on the class
