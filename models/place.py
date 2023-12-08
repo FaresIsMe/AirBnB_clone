@@ -3,6 +3,7 @@
 import models
 from .base_model import BaseModel
 
+
 class Place(BaseModel):
     """Here is the place class"""
     name = ""
@@ -16,6 +17,7 @@ class Place(BaseModel):
     latitude = 0.0
     longitude = 0.0
     amentiy_ids = []
+
     def __init__(self, *args, **kwargs):
         """The init function of my user that inheritest from """
         super().__init__(*args, **kwargs)

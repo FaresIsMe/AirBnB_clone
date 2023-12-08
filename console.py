@@ -10,10 +10,12 @@ from models.user import User
 from models.state import State
 from models import storage
 
+
 class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb) '
     myClasses = ['BaseModel', 'Review', 'Amentiy',
                 'City', 'Place', 'User', 'State']
+
     def do_create(self, arg):
         """ Creates a new instance of BaseModel"""
         if not arg:
@@ -91,8 +93,9 @@ class HBNBCommand(cmd.Cmd):
                             break
             except NameError:
                 print("** class doesn't exist **")
+
     def do_count(self, arg):
-        """A method that count the number of object from 
+        """A method that count the number of object from
         a specfic class"""
         myCounter = 0
         myClassName = ''
@@ -146,18 +149,19 @@ class HBNBCommand(cmd.Cmd):
             instance.save()
         except NameError:
             print("** class doesn't exist **")
+
     def precmd(self, line):
         myArgs = line.split('.')
-        if len(myArgs) == 2:    
+        if len(myArgs) == 2:
             myClassName = myArgs[0]
             theCommand = myArgs[1]
             theCommandAfterNewSplitting = theCommand.split(',')
             if len(theCommandAfterNewSplitting) == 1:
                 theCommandName = theCommand.split('(', 1)
                 theFirstArgumentwithQuotes = (theCommandName[1].split(')', 1))
-                theRealFirst=  theFirstArgumentwithQuotes[0][1:-1]
+                theRealFirst = theFirstArgumentwithQuotes[0][1:-1]
                 theLastCommand = theCommandName[0] + ' ' + myClassName + \
-                ' ' +  theRealFirst
+                ' ' + theRealFirst
                 return theLastCommand
             else:
                 theAttr = theCommandAfterNewSplitting[1][1:-1].strip().strip('"')
@@ -170,6 +174,7 @@ class HBNBCommand(cmd.Cmd):
                 return theLastCommand
         else:
             return line
+
     def emptyline(self):
         """A method to exit the cmd with a new line"""
         pass
@@ -186,11 +191,11 @@ class HBNBCommand(cmd.Cmd):
     def do_quit(self, line):
         """Guess what it does!"""
         return True
-    
+
     def help_create(self):
         """The help for create command"""
         print("Create command to create a new instance of a class")
-        
+
     def help_show(self):
         """The help for show command"""
         print("Show command to print the string representation of an instance")
@@ -198,7 +203,7 @@ class HBNBCommand(cmd.Cmd):
     def help_destroy(self):
         """The help for destroy command"""
         print("Destroy command to delete an instance based on the class name and id")
-        
+
     def help_all(self):
         """The help for all command"""
         print("All command to print all string representation of all instances")
@@ -206,7 +211,7 @@ class HBNBCommand(cmd.Cmd):
     def help_update(self):
         """The help for update command"""
         print("Update command to update an instance based on the class name and id")
-    
-    
+
+
 if __name__ == '__main__':
     HBNBCommand().cmdloop()

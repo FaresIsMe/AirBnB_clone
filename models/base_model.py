@@ -4,11 +4,12 @@ from datetime import datetime
 import uuid
 import models
 
+
 class BaseModel:
     """Here is my BaseModel class from which everything will be inherited"""
     def __init__(self, *args, **kwargs):
         """My init method for the base class
-        
+
         args: The arguments passed to the function in a tuple form
         kwargs: The arguments passed to the function in a key, value pair
         """
@@ -26,18 +27,19 @@ class BaseModel:
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
             models.storage.new(self)
+
     def __str__(self):
         """My str method that will print some info about my class"""
         return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
-    
+
     def save(self):
         """Just a method now and it updates one attribute"""
         self.updated_at = datetime.now()
         models.storage.save()
-    
+
     def to_dict(self):
         myReturnedDic = {}
-        for key, value in  self.__dict__.items():
+        for key, value in self.__dict__.items():
             if key == 'updated_at' or key == 'created_at':
                 myReturnedDic[key] = value.strftime("%Y-%m-%dT%H:%M:%S.%f")
             else:
