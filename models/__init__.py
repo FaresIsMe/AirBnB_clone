@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-from .engine.file_storage import FileStorge
+from .engine.file_storage import FileStorage
 
-storage = FileStorge()
+storage = FileStorage()
 storage.reload()
