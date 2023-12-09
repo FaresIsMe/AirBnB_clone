@@ -3,7 +3,7 @@
 import cmd
 from models.base_model import BaseModel
 from models.review import Review
-from models.amentiy import Amenity
+from models.amenity import Amenity
 from models.city import City
 from models.place import Place
 from models.user import User
@@ -13,7 +13,7 @@ from models import storage
 
 class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb) '
-    myClasses = ['BaseModel', 'Review', 'Amentiy',
+    myClasses = ['BaseModel', 'Review', 'Amenity',
                  'City', 'Place', 'User', 'State']
 
     def do_create(self, arg):
