@@ -14,7 +14,7 @@ from models import storage
 class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb) '
     myClasses = ['BaseModel', 'Review', 'Amentiy',
-                'City', 'Place', 'User', 'State']
+                 'City', 'Place', 'User', 'State']
 
     def do_create(self, arg):
         """ Creates a new instance of BaseModel"""
@@ -83,7 +83,8 @@ class HBNBCommand(cmd.Cmd):
                 for key, value in myDic.items():
                     myClassList = key.split('.')
                     myClassName = myClassList[0]
-                    if myClassName in HBNBCommand.myClasses and myClassName == arg:
+                    if myClassName in HBNBCommand.myClasses and \
+                            myClassName == arg:
                         print(value)
                     else:
                         if arg != myClassName:
@@ -155,22 +156,22 @@ class HBNBCommand(cmd.Cmd):
         if len(myArgs) == 2:
             myClassName = myArgs[0]
             theCommand = myArgs[1]
-            theCommandAfterNewSplitting = theCommand.split(',')
-            if len(theCommandAfterNewSplitting) == 1:
+            theCommandAfterNewS = theCommand.split(',')
+            if len(theCommandAfterNewS) == 1:
                 theCommandName = theCommand.split('(', 1)
                 theFirstArgumentwithQuotes = (theCommandName[1].split(')', 1))
                 theRealFirst = theFirstArgumentwithQuotes[0][1:-1]
                 theLastCommand = theCommandName[0] + ' ' + myClassName + \
-                ' ' + theRealFirst
+                    ' ' + theRealFirst
                 return theLastCommand
             else:
-                theAttr = theCommandAfterNewSplitting[1][1:-1].strip().strip('"')
-                theValue = theCommandAfterNewSplitting[2][1:-1].strip().strip('"')
-                theCommandNameAndId = theCommandAfterNewSplitting[0].split('(')
+                theAttr = theCommandAfterNewS[1][1:-1].strip().strip('"')
+                theValue = theCommandAfterNewS[2][1:-1].strip().strip('"')
+                theCommandNameAndId = theCommandAfterNewS[0].split('(')
                 theName = theCommandNameAndId[0]
                 theId = theCommandNameAndId[1].strip().strip('"')
                 theLastCommand = theName + ' ' + myClassName + ' ' + theId + \
-                ' ' + theAttr + ' ' + theValue
+                    ' ' + theAttr + ' ' + theValue
                 return theLastCommand
         else:
             return line
@@ -202,15 +203,18 @@ class HBNBCommand(cmd.Cmd):
 
     def help_destroy(self):
         """The help for destroy command"""
-        print("Destroy command to delete an instance based on the class name and id")
+        print("Destroy command to delete an instance based on "
+              "the class name and id")
 
     def help_all(self):
         """The help for all command"""
-        print("All command to print all string representation of all instances")
+        print("All command to print all string"
+              "of all instances")
 
     def help_update(self):
         """The help for update command"""
-        print("Update command to update an instance based on the class name and id")
+        print("Update command to update an instance based"
+              "on the class name and id")
 
 
 if __name__ == '__main__':
