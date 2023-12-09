@@ -1,13 +1,13 @@
 #!/usr/bin/python3
 """My file storage class to deal with json things"""
 import json
-from ..base_model import BaseModel
-from ..user import User
-from ..amentiy import Amenity
-from .. city import City
-from ..place import Place
-from ..state import State
-from ..review import Review
+from models.base_model import BaseModel
+from models.user import User
+from models.amentiy import Amenity
+from models.city import City
+from models.place import Place
+from models.state import State
+from models.review import Review
 
 
 class FileStorge:
